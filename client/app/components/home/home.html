@@ -55,7 +55,7 @@
       <md-content ng-if="$ctrl.editNew || $ctrl.editCurrent" layout-padding>
           <form>
               <div layout-gt-sm="row">
-                  <md-input-container class="md-block" flex="25" ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.type}">
+                  <md-input-container class="md-block" flex-gt-sm="25" flex="50" ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.type}">
                    <label>Type</label>
                    <md-select ng-model="$ctrl.emptyResource.type" required>
                      <md-option ng-repeat="type in $ctrl.types" value="{{type}}">
@@ -67,19 +67,20 @@
               <div layout-gt-sm="row">
                 <md-input-container
                     class="md-block"
-                    flex="50"
+                    flex-gt-sm="50"
+                    flex="100"
                     ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.name}"
                 >
                   <label>Name</label>
                   <input ng-model="$ctrl.emptyResource.name" required >
                 </md-input-container>
-                <md-input-container class="md-block" flex="50" ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.url}">
+                <md-input-container class="md-block" flex-gt-sm="50" flex="100" ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.url}">
                   <label>Link</label>
                   <input ng-model="$ctrl.emptyResource.url" required type="url">
                 </md-input-container>
               </div>
               <div>
-                  <md-input-container class="md-block" flex="50">
+                  <md-input-container class="md-block" flex-gt-sm="50" flex="100">
                       <label>Description</label>
                       <textarea
                           ng-model="$ctrl.emptyResource.description"
