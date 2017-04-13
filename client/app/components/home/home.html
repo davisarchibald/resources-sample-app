@@ -1,0 +1,96 @@
+<navbar></navbar>
+<section layout-gt-sm="row" layout="column" class="home">
+    <md-content flex>
+      <md-list flex="">
+        <md-list-item
+            class="md-3-line"
+            ng-repeat="item in $ctrl.resources"
+            ng-mouseenter="$ctrl.handleHover($index);"
+            ng-mouseleave="$ctrl.handleHover();"
+        >
+          <img class="md-avatar" src="{{$ctrl.images[item.type]}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ item.name }}</h3><span>{{ item.url }}</span>
+            <h4>{{ item.description }}</h4>
+          </div>
+          <div
+              class="md-secondary-container"
+              ng-if="$ctrl.activeResource === $index"
+          >
+              <i class="material-icons edit-resource" ng-click="$ctrl._editResource($index)">create</i>
+              <i class="material-icons clear-resource" ng-click="$ctrl._removeResource($index)">clear</i>
+          </div>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+      <md-subheader
+          class="md-no-sticky"
+          layout="row"
+          layout-align="end center"
+      >
+          <md-button
+              class="md-raised md-primary add-resource-btn"
+              ng-click="$ctrl._editResource();"
+              ng-if="$ctrl.showAddResource"
+          >
+              Add Resource
+          </md-button>
+          <section
+              ng-if="$ctrl.editNew || $ctrl.editCurrent"
+          >
+              <md-button
+                  class="md-raised md-info"
+                  ng-click="$ctrl.clearResource();"
+              >
+                Cancel
+              </md-button>
+              <md-button
+                  class="md-raised md-primary"
+                  ng-click="$ctrl.saveResource($ctrl.editCurrent, $index);"
+              >
+                  Save Resource
+              </md-button>
+          </section>
+      </md-subheader>
+      <md-content ng-if="$ctrl.editNew || $ctrl.editCurrent" layout-padding>
+          <form>
+              <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex="25" ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.type}">
+                   <label>Type</label>
+                   <md-select ng-model="$ctrl.emptyResource.type" required>
+                     <md-option ng-repeat="type in $ctrl.types" value="{{type}}">
+                       {{type.toUpperCase()}}
+                     </md-option>
+                   </md-select>
+                 </md-input-container>
+              </div>
+              <div layout-gt-sm="row">
+                <md-input-container
+                    class="md-block"
+                    flex="50"
+                    ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.name}"
+                >
+                  <label>Name</label>
+                  <input ng-model="$ctrl.emptyResource.name" required >
+                </md-input-container>
+                <md-input-container class="md-block" flex="50" ng-class="{'md-input-invalid': $ctrl.submitted && !$ctrl.emptyResource.url}">
+                  <label>Link</label>
+                  <input ng-model="$ctrl.emptyResource.url" required type="url">
+                </md-input-container>
+              </div>
+              <div>
+                  <md-input-container class="md-block" flex="50">
+                      <label>Description</label>
+                      <textarea
+                          ng-model="$ctrl.emptyResource.description"
+                          md-maxlength="150"
+                          rows="1"
+                      >
+                      </textarea>
+                  </md-input-container>
+              </div>
+
+          </form>
+      </md-content>
+    </md-content>
+</section>

@@ -1,0 +1,13 @@
+.home {
+    .edit-resource, .clear-resource {
+        cursor: pointer;
+        margin: 0 5px;
+        transition: color .2s;
+    }
+    .edit-resource:hover {
+        color: blue;
+    }
+    .clear-resource:hover {
+        color: red;
+    }
+}
