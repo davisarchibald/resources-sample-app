@@ -16,7 +16,7 @@ This was built using this Angular ES6 starter pack: [AngularClass/NG6-Starter](h
 * Make better decisions with images/icons
 * LINTING!
 
-##Things I'd like to change
+## Things I'd like to change
 
 * Don't love how my factories are manipulating the original object/array. Would love to spend some time figuring out a better solution that allows for some semblance of immutability. Didn't have time to figure that one out.
 
